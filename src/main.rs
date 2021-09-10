@@ -36,8 +36,8 @@ impl Component for AppComponent {
     fn view(&self) -> Html {
         html! {
             <div>
-                <button onclick=self.link.callback(|_| Msg::AddOne)>{ "+1" }</button>
-                <p>{ self.count }</p>
+                <button class="py-2 px-4 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75" onclick=self.link.callback(|_| Msg::AddOne)>{ "+1" }</button>
+                <p class=classes!("bg-red-100")>{ self.count }</p>
             </div>
         }
     }
