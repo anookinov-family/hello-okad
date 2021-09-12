@@ -50,10 +50,6 @@ impl From<ListVariant> for Html {
     }
 }
 
-pub enum Msg {
-    HeaderClick,
-}
-
 #[derive(Clone, PartialEq, Properties)]
 pub struct Props {
     pub children: ChildrenRenderer<ListVariant>,
@@ -61,17 +57,15 @@ pub struct Props {
 
 pub struct List {
     props: Props,
-    inactive: bool,
 }
 
 impl Component for List {
-    type Message = Msg;
+    type Message = ();
     type Properties = Props;
 
-    fn create(props: Self::Properties, link: ComponentLink<Self>) -> Self {
+    fn create(props: Self::Properties, _link: ComponentLink<Self>) -> Self {
         Self { 
             props,
-            inactive: false,
         }
     }
 
@@ -84,17 +78,11 @@ impl Component for List {
         }
     }
 
-    fn update(&mut self, msg: Self::Message) -> ShouldRender {
-        match msg {
-            Msg::HeaderClick => {
-                self.inactive = !self.inactive;
-                true
-            }
-        }
+    fn update(&mut self, _msg: Self::Message) -> ShouldRender {
+        unimplemented!()
     }
 
     fn view(&self) -> Html {
-        let inactive = if self.inactive { "inactive" } else { "" };
         html! {
             <div>
                 { self.view_header() }
