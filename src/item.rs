@@ -2,11 +2,10 @@ use yew::prelude::*;
 
 #[derive(Clone, PartialEq, Properties)]
 pub struct Props {
-    #[prop_or_default]
-    pub hide: bool,
     pub name: String,
-    #[prop_or_default]
-    pub children: Children,
+    pub title: String,
+    pub status: String,
+    pub role: String,
 }
 
 pub struct ListItem {
@@ -36,24 +35,35 @@ impl Component for ListItem {
 
     fn view(&self) -> Html {
         html! {
-            <div>
-                { &self.props.name }
-                { self.view_details() }
-            </div>
-        }
-    }
-}
-
-impl ListItem {
-    fn view_details(&self) -> Html {
-        if self.props.children.is_empty() {
-            html! {}
-        } else {
-            html! {
-                <div>
-                    { self.props.children.clone() }
-                </div>
-            }
+            <tbody class="bg-white divide-y divide-gray-200">
+                <tr>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="flex items-center">
+                            <div class="ml-4">
+                                <div class="text-sm font-medium text-gray-900">
+                                    { &self.props.name }
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900">
+                            { &self.props.title }
+                        </div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                            { &self.props.status }
+                        </span>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        { &self.props.role }
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                        <a href="#" class="text-indigo-600 hover:text-indigo-900">{ "Edit"}</a>
+                    </td>
+                </tr>
+            </tbody>
         }
     }
 }

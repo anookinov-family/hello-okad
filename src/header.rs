@@ -32,9 +32,9 @@ impl Component for ListHeader {
 
     fn view(&self) -> Html {
         html! {
-            <div>
+            <h2 class="text-lg leading-6 font-medium text-gray-900">
                 { &self.props.text }
-            </div>
+            </h2>
         }
     }
 }
