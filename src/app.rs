@@ -1,7 +1,7 @@
-use crate::components::header::ListHeader;
-use crate::components::item::ListItem;
-use crate::pages::list::List;
 use yew::prelude::*;
+use yew_router::{router::Router};
+use crate::switch::AppRoute;
+use crate::pages::family::Family;
 
 pub enum Msg {
 }
@@ -27,25 +27,25 @@ impl Component for AppComponent {
     }
 
     fn view(&self) -> Html {
-        let letters = ('A'..='C')
-            .map(|letter| html_nested! { 
-                <ListItem
-                    name=letter.to_string()
-                    title=letter.to_string()
-                    status=letter.to_string()
-                    role=letter.to_string()
-                />
-            });
         html! {
-            <div class="lg:flex lg:items-center lg:justify-between">
-                <div class="flex-1 min-w-0">
-                    <h1 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">{ "Okad Family" }</h1>
-                    <List>
-                        <ListHeader text="Members" />
-                        { for letters }
-                    </List>
-                </div>
-            </div>
+            <Router<AppRoute>
+                render={Router::render(Self::switch)}
+            />
+        }
+    }
+}
+
+impl AppComponent {
+    fn switch(route: AppRoute) -> Html {
+        match route {
+            AppRoute::Home =>
+                html! {
+                    <h1>{ "Home" }</h1>
+                },
+            AppRoute::Family =>
+                html! {
+                    <Family />
+                }
         }
     }
 }
