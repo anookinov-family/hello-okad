@@ -33,7 +33,3 @@ impl Component for AppComponent {
         }
     }
 }
-
-impl AppComponent {
-
-}
