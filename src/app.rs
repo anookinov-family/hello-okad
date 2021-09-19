@@ -1,7 +1,6 @@
 use yew::prelude::*;
 use yew_router::{router::Router};
-use crate::switch::AppRoute;
-use crate::pages::family::Family;
+use crate::switch::{AppRoute, switch};
 
 pub enum Msg {
 }
@@ -29,23 +28,12 @@ impl Component for AppComponent {
     fn view(&self) -> Html {
         html! {
             <Router<AppRoute>
-                render={Router::render(Self::switch)}
+                render={Router::render(switch)}
             />
         }
     }
 }
 
 impl AppComponent {
-    fn switch(route: AppRoute) -> Html {
-        match route {
-            AppRoute::Home =>
-                html! {
-                    <h1>{ "Home" }</h1>
-                },
-            AppRoute::Family =>
-                html! {
-                    <Family />
-                }
-        }
-    }
+
 }
