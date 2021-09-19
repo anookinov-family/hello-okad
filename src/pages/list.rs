@@ -1,5 +1,5 @@
-use crate::header::{ListHeader, Props as HeaderProps};
-use crate::item::{ListItem, Props as ItemProps};
+use crate::components::header::{ListHeader, Props as HeaderProps};
+use crate::components::item::{ListItem, Props as ItemProps};
 use yew::html::{ChildrenRenderer, NodeRef};
 use yew::prelude::*;
 use yew::virtual_dom::{VChild, VComp};

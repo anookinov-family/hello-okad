@@ -1,7 +1,6 @@
 mod app;
-mod list;
-mod header;
-mod item;
+mod pages;
+mod components;
 
 fn main() {
     yew::start_app::<app::AppComponent>();

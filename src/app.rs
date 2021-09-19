@@ -1,6 +1,6 @@
-use crate::header::ListHeader;
-use crate::item::ListItem;
-use crate::list::List;
+use crate::components::header::ListHeader;
+use crate::components::item::ListItem;
+use crate::pages::list::List;
 use yew::prelude::*;
 
 pub enum Msg {
